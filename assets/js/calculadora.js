@@ -1,5 +1,12 @@
 // function para que serve???? contém um trecho de código que tem o 
-// objetivo de resolver algum problema  
+// objetivo de resolver algum problema
+
+// Consultar um elemento por tag:
+// document.querySelector("h1")
+// Consultar um elemento por id
+// document.querySelector("#campo-nome")
+
+
 function realizarSoma() {
     // Pegar o campo (input) que contém o id="campo-numero1"
     let inputNumero1 = document.querySelector("#campo-numero1");
