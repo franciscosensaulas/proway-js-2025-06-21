@@ -48,13 +48,19 @@ function preencherCampoMedia() {
 
     let media = calcularMedia();
 
+    if(isNaN(media) === true){
+        // Return sem nada depois n faz o método ser com retorno, simplesmente 
+        // encerra a execução deste método
+        return;
+    }
+
     let mediaFormatada = media.toLocaleString('pt-BR', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
     });
 
     spanMedia.innerHTML = mediaFormatada;
-}
+}   
 
 function cadastrar() {
     let inputNome = document.querySelector("#campo-nome");
@@ -80,6 +86,14 @@ function cadastrar() {
     let campoEstrangeiro = document.querySelector("#campo-estrangeiro");
     let estrangeiro = campoEstrangeiro.checked;
 
+    let media = calcularMedia();
+    let statusMedia = "";
+    if (media >= 6.00){
+        statusMedia = "Aprovado";
+    }else{
+        statusMedia = "Reprovado";
+    }
+
     let textarea = document.querySelector("#campo-alunos");
     // Fluxo para acumular dados em uma string
     // variavel = variavel + novo
@@ -88,6 +102,8 @@ function cadastrar() {
     // texto = texto + " Uva";  // Abacate Pera Uva
     textarea.value = textarea.value + "\nNome: " + nome +
         "\nSobrenome: " + sobrenome +
+        "\nMédia: " + media + 
+        "\nStatus: " + statusMedia +
         "\nIdade: " + idade +
         "\nClasse: " + classe +
         "\nModalidade: " + modalidade +
@@ -103,13 +119,20 @@ function cadastrar() {
     - campo number quantidade
     - campo number preço unitário com step 0.01
     - botao cadastrar que chama a função no onclick "registrar()"
-
-Criar o script assets/js/exercicio01.js
+    
+    Criar o script assets/js/exercicio01.js
     Criar função registrar()    
-        Pegar o campo do nome do produto por id
-        Pegar o valor do campo do nome do produto
-        Apresentar o nome do produto
-        Fazer o mesmo para os d+ campos
+    Pegar o campo do nome do produto por id
+    Pegar o valor do campo do nome do produto
+    Apresentar o nome do produto
+    Fazer o mesmo para os d+ campos
+Parte 2:
+    HTML: Criar span de total do produto após a div do preço unitário
+    JS: Criar uma função para calcular o total do produto, com o nome 'calcularTotalProduto'
+            retornar o preço daquele produto
+        Modificar a função de registrar para chamar a função calcularTotalProduto armazenando em uma variável
+        Apresentar o total junto no console
+
 Ex. 2: Criar uma página (paginas/exercicio02-reclamacao.html) com os seguintes itens:
     - Campo de nome do reclamente
     - Campo e-mail
